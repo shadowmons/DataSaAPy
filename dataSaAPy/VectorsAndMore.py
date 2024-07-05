@@ -3,6 +3,7 @@ Created on Jun 30, 2024
 
 @author: shadowmons
 '''
+from gi._gi import new
  
 def vectores():
     #Listas - Vectores
@@ -28,6 +29,7 @@ def vectores():
     #Nested List
     vector = [[1,2,3],[2,4,5],[4,2,5]]
     print(vector)
+    
     
 def crud():
     #CRUD create, read, update, delete
@@ -77,6 +79,10 @@ def crud():
     abc.sort()
     print(abc)
     #You cannot sort and array with mixed types
+    newabc = abc.copy()
+    #Return a shallow copy of the list. Equivalent to a[:].
+    print(newabc)
+
     
 def tuplas():
     #Tuples are created with parentheses
@@ -107,8 +113,32 @@ def tuplas():
     print(type(tupla))
     #you can do a tuple of lists or a list of tuples
     
+def sets():
+    #are defined with braces
+    #A set is an unordered collection with no duplicate elements
+    print('Sets',30*"*")
+    colors = {'red', 'blue', 'yellow','grey', 'orange','green'}
+    print(colors)
+    print('orange' in colors)
+    print('brown' in colors)
+    a = set('abracadabra')
+    b = set('alacazam')
+    print(a)
+    print(b)
+    #they are like set of char elements, we did the convertion os a string
+    #(array of chars) to set
+    print(type(a))
+    #letters in a but not in b
+    print(a-b)
+    #letters in a or b or both
+    print(a|b)
+    #letters in both a and b
+    print(a&b)
+    #etters in a or b but not both
+    print(a^b)
+    
 def diccionario():       
-    #Diccionary, are defined with braces
+    #Diccionary, are defined with braces, and is a pair of key and value
     print('Dictionary',30*"*")
     mydic = {'name':'pajaro metalico',
              'marca': 'la hora',
