@@ -3,7 +3,8 @@ Created on Jun 30, 2024
 
 @author: shadowmons
 '''
-from gi._gi import new
+from math import ceil, floor
+from random import random
  
 def vectores():
     #Listas - Vectores
@@ -12,6 +13,9 @@ def vectores():
     vector = [1,2,3,4,5,6,7]
     print("Este es un vector ", vector)
     print(type(vector))
+    #min and max values
+    print(f'the max value of the list is {max(vector)}')
+    print(f'the min value of the list is {min(vector)}')
     dias = ['lunes','sabado','miercoles','domingo']
     print('vector de dias: ', dias)
     mixed=[1,'2','hola',True]
@@ -23,6 +27,7 @@ def vectores():
     # texto[0] = 'f' (si texto es un string, no se puede)
     dias[0]='viernes'
     #Algunos metodos de listas son validos para string
+    #The Slicing is the same as strings
     print(vector[:2]) 
     print(True in mixed)
     print(False in mixed)
@@ -47,7 +52,7 @@ def crud():
     num2 = num
     print(num2)
     num2 = [10,11,12,13]
-    #concatena lista
+    #Join list/Concatenar
     newlist = num + num2
     print(newlist)
     pos = newlist.index(8)
@@ -73,6 +78,9 @@ def crud():
     #sorting the list.. like obvious not?
     newlist.sort()
     print(newlist) 
+    #sort the list in reverse, decremental
+    newlist.sort(reverse=True)
+    print(f'List in reverse orger {newlist}') 
     #sorting with strings
     abc = ['hola','aire','odio','luna','pera','gota']
     print(abc)
@@ -167,7 +175,8 @@ def diccionario():
     print(persona)
     #modify dictionary
     persona['name']='Angel'
-    persona['age']=30
+    persona.update({'age':30})
+    #The key advantage to using update is the ability to modify multiple values in one operation
     #works as a list
     persona['langs'].append('C')
     print(persona)
@@ -180,7 +189,8 @@ def diccionario():
     print('items: ', persona.items())
     #keys list with keys
     print('keys> ', persona.keys())
-    #values rlist with value
+    print(type(persona.keys()))
+    #values list with value
     print('values> ', persona.values())
     #check this out, a list of tuples
     lista= list(persona.items())
@@ -280,11 +290,11 @@ def ciclos():
         for j in i:
             print(j)
                 
-def miscelaneos():
-    print('Variables, String y otras cosas \n',30*"*")
-    #Variables
-    nombre = "Victor"
-    edad = input('what is your age?')
+def numbers():
+    print('Values and numbers\n',30*"*")
+    #Variable
+    # edad = input('what is your age?')
+    edad = 334
     try:
         edad = int(edad)
     except ValueError:
@@ -293,26 +303,6 @@ def miscelaneos():
     print(12 + 35)
     print(12 - 35)
     print(12 * 35)
-    
-    #String
-    string = "string"
-    print(type(string) )
-    lastName= "Gil"
-    longName = nombre + " " + lastName
-    print(longName)
-    sentence = "This is a sentence, or is not? "
-    print(sentence)
-    # si quiero usar un apostrofe o una comilla doble
-    #usa la contraria para abrir y cerrar   
-    sentence="One wise man once said : '... what did i say?'"
-    print(sentence)
-    #Formato 
-    template = "the name is: " + nombre + " and tha family ashamed is: "   + lastName
-    print(template)
-    template = "the name is:  {} and tha family ashamed is: {}".format(nombre, lastName)
-    print(template)
-    template = f"and this si the other form to print the name {nombre} and the other thing: {lastName}"
-    print(template *4)
     
     #numbers
     numero = 23
@@ -330,13 +320,6 @@ def miscelaneos():
     print(boleano)
     print(type(boleano))
     print(not boleano)
-    
-    #print in different formats
-    print("the chosen number is: " + str(numero))
-    print(f"the same number, other format {numero}")
-    #you can convert types, always as they make sense
-    numero2 = "43"
-    numero2 = int(numero2)
     
     # + - * / r
     #rest is %, division entera es //, el de elevado es **
@@ -400,12 +383,50 @@ def miscelaneos():
     else:
         print('lo que sea') 
         
-    #random number
-    from random import random
+    #random numbe
     numeroR = format(random() * 3, ".3g")
     print(numeroR)
+    #rounding
+    roundUp = ceil(12.5)
+    roundDown = floor(12.5)
+    print(roundUp)
+    print(roundDown)
+    #abs abs(number)
+    
+    
+def Stringss():
+    print('Stringsss\n',30*"*")
+    #String
+    nombre = "Victor"
+    string = "string"
+    print(type(string) )
+    lastName= "Gil"
+    longName = nombre + " " + lastName
+    print(longName)
+    sentence = "This is a sentence, or is not? "
+    print(sentence)
+    # si quiero usar un apostrofe o una comilla doble
+    #usa la contraria para abrir y cerrar   
+    sentence="One wise man once said : '... what did i say?'"
+    print(sentence)
+    #Formato 
+    template = "the name is: " + nombre + " and tha family ashamed is: "   + lastName
+    print(template)
+    template = "the name is:  {} and tha family ashamed is: {}".format(nombre, lastName)
+    print(template)
+    template = f"and this si the other form to print the name {nombre} and the other thing: {lastName}"
+    print(template *4)
+    
+    numero = "43"
+    #you can convert types, always as they make sense
+    numero2 = int(numero)
+    #print in different formats
+    print("the chosen number is: " + str(numero))
+    print(f"the same number, other format {numero2}")
     
     #Modifying strings
+    #Strings are inmutable, so if you want to change for good
+    #you gotta make a new variable 
     texto = 'Lets see how Good this is'
     print('vamos' in texto)
     print(len(texto))
@@ -421,9 +442,17 @@ def miscelaneos():
     print(texto2.capitalize())
     print(texto2.title())
     print(texto2.isdigit())
+    print('-89'.isnumeric())
     print('45'.isdigit())
     print('45.5'.isdigit())
     print('554'.isdecimal())
+    #multiplelineString
+    multiline = """Facts about the Moon:
+    There is no atmosphere. 
+    There is no sound."""
+    print(multiline)
+    multiline = "Facts about the Moon:\n There is no atmosphere.\n There is no sound."
+    print(multiline)
     print("%"*15)
     #indexing y slicing
     text = "Okey this si the interesting part"
@@ -451,3 +480,12 @@ def miscelaneos():
     print(escrito[::2])
     escrito = "DDoo yyoou  wwanntt ttoo uunndeerrsttaanndd wwhhatt  ddiid II  wrriitee?"
     print(escrito[::2])
+    #Split Without arguments, the method will separate the string at every space. 
+    #it returned an array/list
+    print(escrito.split())
+    #you can defined the element of separation
+    print(multiline.split('\n'))
+    #use join to put all back together again
+    print('-'.join(escrito.split()))
+    #find return -1 if doesnt find anything, or the index of the find object
+    print(escrito.find('II'))
